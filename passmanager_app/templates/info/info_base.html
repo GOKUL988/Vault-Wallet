@@ -1,0 +1,26 @@
+{% extends 'base.html'%} 
+{% block content %} 
+{% load static %}
+ <table class="pass_src_tab1" align="center" id="myTable"> 
+        <tr>
+            <th><h2>PErsonal info</h2></th> 
+            <td><a href="http://127.0.0.1:8000/add_info"><button class="base_but_2">ADD</button></a></td>
+        </tr>
+    </table>
+
+<div class="info_base_div1">
+    {% for i in b%}
+    <a href="http://127.0.0.1:8000/dt_info/{{i.info_acc_id}}" class="info_base_div1_href">
+        <div class="info_base_div1_div">
+            <p><img src="{% static 'OIP.png' %}" class="info_base_div1_div-img"><span class="info_base_div1_div-span1">{{i.firstnme}}</span></p>
+            <p class="info_base_div1_div-icon">📞<span class="info_base_div1_div-inf">{{i.phone}}</span></p>
+            <p class="info_base_div1_div-icon">✉️<span class="info_base_div1_div-inf">{{i.email}}</span></p>
+            <p class="info_base_div1_div-icon">📍<span class="info_base_div1_div-inf">{{i.city}}-{{i.state}}</span></p>
+        </div>
+    </a>
+    {% endfor%}
+</div>    
+
+    {% block add_content %}{% endblock %}
+    {% block view_content %}{% endblock %}
+{% endblock %}

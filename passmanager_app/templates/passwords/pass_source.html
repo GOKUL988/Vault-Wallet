@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+{% block content%}
+{% if a%}
+    <table class="pass_src_tab1" align="center" id="myTable"> 
+        <tr>
+            <th><h2>password</h2></th> 
+            <td><a href="http://127.0.0.1:8000/add_pass"><button class="base_but_2">ADD</button></a></td>
+        </tr>
+    </table>
+    <div class="pass_src_div2_div1">
+        <form method="GET">
+            <div>
+                <input type="search" placeholder="SEARCH" class="pass_src_div2_div1_inp" name="pass_search"> 
+
+                <input type="submit"  value="SEARCH" class="pass_src_srch_but">
+            </div>
+        </form>    
+    </div>
+{% if b %}
+    <div class="pass_src_div_div1">
+        {% for i in b%}
+        <div class="pass_src_div_div2">
+            <div class="pass_src_div_div2_img">
+                <img src="https://www.google.com/s2/favicons?domain={{i.site}}.com&sz=128" alt="web">
+            </div>
+            <div class="pass_src_div_con">
+                <h4>{{i.site}}</h4> 
+                <p>{{i.user_name}}</p>
+            </div>
+            <div class="pass_src_div_but">
+                <a href="http://127.0.0.1:8000/view_pass/{{i.acc_id}}"><button class="base_but_2">VIEW</button></a>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+        {% else %} 
+        <h3 align="center">NO SEARCH DATA FOUND</h3>
+{% endif%}
+{% endif%}
+{%endblock%}
+
+<script>
+document.getElementById("myTable").classList.add("animate");
+</script>
+

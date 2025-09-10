@@ -1,0 +1,62 @@
+{% extends 'info/info_base.html' %} 
+
+{% block add_content %} 
+<div class="add-info-main-div">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="add-info-tit1">add personal info</div>
+        <div class="input-con">
+            <label class="info_add_lab">first name</label>
+            <input type="text" name="first"  required>
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">middle name</label>
+            <input type="text" name="middle" >
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">last name</label>
+            <input type="text" name="last">
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">email</label>
+            <input type="text" name="email">
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">date of birth</label>
+            <input type="text" name="dob" placeholder="dd-mm-yyyy">
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">phone</label>
+            <input type="text" name="phone" >
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">address</label>
+            <input type="text" name="address" >
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">pincode</label>
+            <input type="text" name="pincode" >
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">city</label>
+            <input type="text" name="city" >
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">state</label>
+            <input type="text" name="state" >
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">country</label>
+            <input type="text" name="country" >
+        </div>
+        <div class="input-con">
+            <label class="info_add_lab">organizations</label>
+            <input type="text" name="organi" >
+        </div>
+        <div class="add-info-div-2">
+            <a href="http://127.0.0.1:8000/info_base" style="margin-right: 10px;"><input type="button" value="BACK" class="view_pass_div1_but2"></a>
+            <input type="submit" value="SAVE" class="base_but_2">
+        </div>
+    </form>
+</div>
+{% endblock %}

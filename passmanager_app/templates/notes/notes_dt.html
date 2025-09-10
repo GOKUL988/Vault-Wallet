@@ -1,0 +1,83 @@
+{% extends 'notes/note_base.html'%}  
+{% block notes_content %}
+<div>
+    <div class="notes_dt_div1-tit1">{{note_acc.note_name}}</div>
+</div>
+<div class="notes_dt_div2">
+{% for i in details %} 
+    <div class="note-dtview_div2">
+        <textarea readonly>{{i.note_con}}</textarea>        
+    </div> 
+{% endfor %}
+</div>
+<div class="notes_dt_div3">
+    <a href="http://127.0.0.1:8000/note_base"><input type="button" value="BACK" class="base_but_2"></a> 
+    <input type="button" value="ADD" onclick="notes_dt_addnw()" class="view_pass_editsec_inp_but">
+    <input type="button" value="EDIT" onclick="notes_dt_edt()" class="view_pass_div1_but1" > 
+    <input type="button" value="DELETE" onclick="notes_dt_del()" class="view_pass_div1_but2"> 
+</div>
+
+
+<div id="notes_dt_div4" class="notes_edit_sect">
+    <div class="note-editsec_div2">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="note-editsec_tit1">edit notes</div>
+            <div>
+                <input type="hidden" name="note_dt" value="edit_notes">
+                {% for i in details %}   
+                <textarea name="field_edit[]">{{i.note_con}}</textarea>
+                {% endfor %}
+            </div>
+            <div class="note-editsec_div2_div3">
+                <input type="button" onclick="notes_dt_edt_cls()" value="CANCEL" class="base_but_2">
+                <input type="submit" value="SAVE" class="view_pass_editsec_inp_but">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="notes_dt_delsec" class="notes_dt_delsec">
+    <div class="notes_dt_del_div2">
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="note_dt" value="del_notes">
+            <div class="note-editsec_tit1">notes DElete</div>
+             {% for i in details %}
+            <div class="notes_dt_del_div2-div1">
+                <textarea>{{i.note_con}}</textarea>
+                <input type="checkbox" name="inp_choice[]" value="{{i.pk}}">
+            </div>
+            {% endfor %}
+            <div>
+                <input type="button" value="CANCEL" onclick="notes_dt_delcnc()" class="view_pass_div1_but1">
+                <input type="submit" value="DELETE"  class="view_pass_div1_but2">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="notesdt_add_nw" class="notesdt_add_new">
+    <div class="notesdt_add_nw_div1">
+        <form method="POST">
+            {% csrf_token %} 
+            <div class="note-editsec_tit1">add notes</div>
+            <input type="hidden" name="note_dt" value="add_fields">
+            <div id="add_field" class="note_dts_add_new">
+                <div id="div1">
+                    <div>
+                        <textarea name="field[]" placeholder="ADD CONTENT" required></textarea>
+                        <button onclick="removeField(this)" class="note_add_field-clc">✖</button>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <input type="button" value="CANCEL" onclick="notes_dt_addclc()" class="base_but_2">
+                <input type="button" class="view_pass_div1_but2" value="NEW" onclick="add_note_ft1()"> 
+                <input type="submit" value=" SAVE"  class="view_pass_editsec_inp_but">
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

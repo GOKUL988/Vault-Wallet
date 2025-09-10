@@ -1,0 +1,36 @@
+{% extends 'base.html'%} 
+{% block content %} 
+<form method="POST">
+    {% csrf_token %} 
+   <div>
+        <div class="add_pass_tit1">add passwords</div>
+        <div class="add_pass_div1"><input class="add_pass_div1_inp" type="text" name="site_name" placeholder="SITE NAME"></div> 
+        <div class="add_pass_div1"><input class="add_pass_div1_inp" type="text" name="link_f" placeholder="LINK" required></div> 
+        <div class="add_pass_div1"><input class="add_pass_div1_inp" type="text" name="username" placeholder="USERNAME"></div> 
+        <div class="add_pass_div1"><input class="add_pass_div1_inp" type="password" name="pass_word" required placeholder="PASSWORD"></div>
+        <div class="add_pass_div1">
+            <select class="add_pass_div1_sel" name="cate">
+                <option value="">--</option>
+                <option value="BUSINESS">BUSINESS</option>
+                <option value="EMAIL">EMAIL</option>
+                <option value="ENTERTAINMENT">ENTERTAINMENT</option>
+                <option value="FINANCE">FINANCE</option>
+                <option value="GAMES">GAMES</option>
+                <option value="NEWS">NEWS</option>
+                <option value="SHOPPING">SHOPPING</option>
+                <option value="SOCIAL MEDIA">SOCIAL MEDIA</option>
+                <option value="SPORTS">SPORTS</option>
+                <option value="TECH">TECH</option>
+                <option value="TRAVEL">TRAVEL</option>
+                <option value="UTILITES">UTILITES</option>
+                <option value="OTHER">OTHER</option>
+            </select>
+        </div> 
+        <div class="add_pass_div1"><textarea class="add_pass_div1_inp_notes" name="notes" placeholder="NOTES"></textarea></div> 
+        <div class="add_pass_div1">
+            <a href="http://127.0.0.1:8000/pass_source"><input type="button" value="BACK" class="view_pass_div1_but2"></a>
+            <input type="submit" value="SAVE" class="base_but_2">
+        </div>
+   </div>
+</form>
+{%endblock%}

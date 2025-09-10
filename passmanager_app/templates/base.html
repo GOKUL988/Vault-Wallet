@@ -1,0 +1,26 @@
+{%load static %}
+<html>
+    <head>
+        <title>WALLET</title>
+        <link rel="stylesheet" href="{% static 'main1.css'%}">
+    </head>
+    <body>
+       <div class="us_main">
+            <div class="us_main_div1">
+                <div>
+                    <div class="us_main_div1_div1">Personal wallet</div>
+                    <div class="us_main_div1_div2">welcome, {{a.username}}</div>
+                    <a href="http://127.0.0.1:8000/pass_source" class="us_main_div1__href"><div class="us_main_div1_div3">Passwords</div></a> 
+                    <a href="http://127.0.0.1:8000/info_base" class="us_main_div1__href"><div class="us_main_div1_div3">Personal info</div></a>
+                    <a href="http://127.0.0.1:8000/note_base" class="us_main_div1__href"><div class="us_main_div1_div3">secure notes</div></a>
+                    <a href="{% url 'logout'%}" class="us_main_div1__href"><div class="us_main_div1_div3">LOGOUT</div></a>
+                </div>
+
+            </div>
+            <div class="us_main_div2">
+               {% block content%} 
+               {%endblock%}
+            </div>
+        <script src="{% static 'main.js'%}"></script>
+    </body>          
+</html>       

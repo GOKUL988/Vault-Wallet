@@ -1,0 +1,27 @@
+{% extends 'notes/note_base.html' %} 
+{% block add_sec %} 
+<form method="POST"> 
+    {% csrf_token %}
+     <div class="note_add_div1_con">
+         <div class="note_add_tit1">Add Notes</div> 
+        <div>
+            <span>File name</span>
+            <input type="text" name="file_name" required>
+        </div>
+     </div>
+    <div class="note_add_div1" id="add_field">
+        <div class="note_add_div1_div3">
+            <textarea name="field[]" placeholder="ADD CONTENT" required></textarea>
+            <button type="button" onclick="removeField(this)" class="note_add_field-clc">✖</button>
+        </div>
+    </div>
+    <div class="note_add_div2">
+        <div class="note_add_div2_div1">
+            <input type="button" value="ADD" onclick="add_note_ft()"  class="view_pass_div1_but1">
+        </div>
+        <a href="http://127.0.0.1:8000/note_base"><input type="button" value="CANCEL" class="view_pass_div1_but2"></a>
+        <input type="submit" value="SAVE" class="base_but_2">
+    </div>
+</form>
+
+{% endblock %}

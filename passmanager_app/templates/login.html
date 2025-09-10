@@ -1,0 +1,57 @@
+{% load static %} 
+<html>
+    <head>
+        <title>LOGIN</title>
+        <link rel="stylesheet" href="{% static 'main1.css'%}">
+    </head>
+    <body>
+        <div class="home_div1">
+            <div class="home_div1_side1">
+                <table>
+                    <tr>
+                        <th class="home_div1_tit1">password Manager</th>
+                    </tr>
+                </table>
+                <table class="home_div1_tabl2">
+                    <tr>
+                        <th class="home_div1_tabl2_tit2">hello welcome 🐣</th>
+                    </tr>
+                    <tr>
+                        <th class="home_div1_tabl2_tit3"> don't have an account</th>
+                    </tr>
+                    <tr>
+                        <td><a href="http://127.0.0.1:8000/signup"><button class="basicbut1">SIGN UP</button><span class="butcvspan"></span></a></td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div class="home_div1_side2">
+                <form method="POST">
+                    {%csrf_token%}
+                    <table align="center"  class="home_div1_side2_tab1">
+                        <tr>
+                            <th  class="home_div1_side2_tab1_tit1">Login</th>
+                        </tr>
+                        <tr>
+                            <td><input type="email" name="email" placeholder="EMAIL" required class="home_div1_side2_tab1_input"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" name="password" placeholder="PASSWORD" required class="home_div1_side2_tab1_input"></td>
+                        </tr>
+                        <tr>
+                            <th style="padding-top: 10px;"><input type="submit" value="LOGIN" class="home_div1_side2_tab1_but"></th>
+                        </tr>
+                    </table>
+                </form>
+                 {% if messages%} 
+                <div id="message_pop" class="messages">
+                    {% for message in messages %}
+                    <span class="{{ message.tags }}">{{ message }} <button onclick="cancel()" class="closebut" >X</button></span>
+                    {% endfor %}
+                </div>
+                {% endif%}
+            </div>
+        </div>
+        <script src="{% static 'main.js'%}"></script>
+    </body>
+</html>

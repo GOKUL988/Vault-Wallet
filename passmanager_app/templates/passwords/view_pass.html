@@ -1,0 +1,94 @@
+{% extends 'base.html'%}
+{% block content%}
+{% load static%}
+<p id="link" style="display: none;">{{result.link}}</p>
+<div id="view_section">
+    <div class="view_pass_tit">PASSWORD {{result.site}}</div>
+        <table cellpadding="10px"  class="view_pass_tab1" align="center">
+            <tr>
+                <th>SITE :</th>
+                <td><input type="text" value="{{result.site}}" readonly></td>
+            </tr>
+            <tr>
+                <th>LINK :</th> 
+                <td><input type="text" value="{{result.link}}" readonly><button onclick="link_open()" class="link_redirect">↗️</button></td>
+            </tr>
+            <tr>
+                <th>USER NAME :</th>
+                <td><input type="text" value="{{result.user_name}}" readonly></td>
+            </tr>
+            <tr>
+                <th>password :</th> 
+                <td><input type="password" value="{{pass}}"  id="passwordField"><button onclick="togglePassword()" class="view_pass_tab1_see">👁️</button><button class="copybut" onclick="copy_text()">📋</button></td>
+            </tr>
+            <tr>
+                <th>Category :</th> 
+                <td><input type="text" value="{{result.category}}"></td>
+            </tr>
+            <tr>
+                <th>NOtes :</th> 
+                <td><textarea class="view_pass_tab1_txtar" readonly> {{result.Notes}}</textarea></td>
+            </tr>
+        </table>
+        <div class="view_pass_div1">
+            <div>
+                <a href="http://127.0.0.1:8000/pass_source"><button class="base_but_2">BACK</button></a>
+                <button class="view_pass_div1_but1" onclick="edit_section()">edit</button>
+                <button class="view_pass_div1_but2" onclick="del_sel()">delete</button>
+            </div>
+        </div>
+</div>   
+
+<div id="edit_section" class="view_pass_div1_editsec">
+    <div class="view_pass_div2_editsec">
+        <form method="POST">
+            <div class="view_pass_editsec_div1">edit pass</div>
+            {% csrf_token%}
+             <input type="hidden" name="form_type" value="edit">
+            <div class="add_pass_div1"><input type="text" name="site_edt" value="{{result.site}}" class="view_pass_editsec_inp" placeholder="site name"></div>
+            <div class="add_pass_div1"><input type="text" name="link_edt" value="{{result.link}}" class="view_pass_editsec_inp" placeholder="link"></div>
+            <div class="add_pass_div1"><input type="text" name="user_edt" value="{{result.user_name}}" class="view_pass_editsec_inp" placeholder="user name"></div>
+            <div class="add_pass_div1"><input type="password" name="pass_edt" value="{{pass}}" class="view_pass_editsec_inp" placeholder="password"></div>
+            <div class="add_pass_div1">
+                <select class="view_pass_editsec_inp" name="cate_edt" value="{{result.category}}">
+                    <option value="{{result.category}}"> SELECTED {{result.category}}</option>
+                    <option value="BUSINESS">BUSINESS</option>
+                    <option value="EMAIL">EMAIL</option>
+                    <option value="ENTERTAINMENT">ENTERTAINMENT</option>
+                    <option value="FINANCE">FINANCE</option>
+                    <option value="GAMES">GAMES</option>
+                    <option value="NEWS">NEWS</option>
+                    <option value="SHOPPING">SHOPPING</option>
+                    <option value="SOCIAL MEDIA">SOCIAL MEDIA</option>
+                    <option value="SPORTS">SPORTS</option>
+                    <option value="TECH">TECH</option>
+                    <option value="TRAVEL">TRAVEL</option>
+                    <option value="UTILITES">UTILITES</option>
+                    <option value="OTHER">OTHER</option>
+                </select>
+            </div> 
+            <div class="add_pass_div1"><textarea  class="view_pass_tab1_txtar1" name="note_edt">{{result.Notes}}</textarea></div>
+            <div class="add_pass_div1">
+                <input type="button" onclick="edit_sec_close()" class="base_but_2" value="CANCEL">
+                <input type="submit" value="SAVE" class="view_pass_editsec_inp_but">
+            </div>
+        </form>    
+    </div>
+</div>
+
+<div class="view_pass_delsec" id="delete_sec">
+    <div class="view_pass_delsec_div1">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="view_pass_delsec_div2">do you want delete this password details</div>
+            <div>
+                 <input type="hidden" name="form_type" value="delete">
+                <input type="button" value="CANCEL" onclick="del_clos()" class="base_but_2">
+                <input type="submit" value="DELETE" class="basic_but_3_del">
+            </div>
+        </form>
+        
+    </div>
+</div>
+ {% endblock%}  
+     <script src="{% static 'main.js'%}"></script> 

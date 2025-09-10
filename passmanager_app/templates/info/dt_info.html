@@ -1,0 +1,174 @@
+{% extends 'info/info_base.html' %}
+
+{% block view_content %}
+
+<table class="dt-info-tab1" align="center">
+    <tr>
+        <th>first name</th> 
+        <th>middle name</th> 
+        <th>last name</th>
+    </tr>
+    <tr>
+        <td><input type="text" value="{{f.firstnme}}"></td>
+        <td><input type="text" value="{{f.middlenme}}"></td>
+        <td><input type="text" value="{{f.lastnme}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">email</th>
+    </tr>
+    <tr>
+        <td colspan="3"><input type="text" value="{{f.email}}"></td> 
+    </tr>
+    <tr>
+        <th colspan="3">date of birth</th>
+    </tr>
+    <tr>
+        <td colspan="3"><input type="text" value="{{f.dob}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">phone</th>
+    </tr>
+    <tr>
+        <td  colspan="3"><input type="text" value="{{f.phone}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">address</th>
+    </tr>
+    <tr>
+        <td  colspan="3"><input type="text" value="{{f.address}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">pincode</th>
+    </tr>
+    <tr>
+        <td  colspan="3"><input type="text" value="{{f.pin}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">city</th>
+    </tr>
+    <tr>
+        <td  colspan="3"><input type="text" value="{{f.city}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">state</th>
+    </tr>
+    <tr>
+        <td  colspan="3"><input type="text" value="{{f.state}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">country</th>
+    </tr>
+    <tr>
+        <td  colspan="3"><input type="text" value="{{f.country}}"></td>
+    </tr>
+    <tr>
+        <th colspan="3">organizations</th>
+    </tr>
+    <tr>
+        <td  colspan="3"><input type="text" value="{{f.organizations}}"></td>
+    </tr>
+</table>
+<table align="center" class="dt-info-tab2">
+    <tr>
+        <th><a href="http://127.0.0.1:8000/info_base"><input type="button" value="CANCEL"  class="base_but_2"></a></th>
+        <th><input type="button" value="EDIT" class="view_pass_div1_but1" onclick="dt_edt_sec()"></th>
+        <th><input type="button" value="DELETE" class="view_pass_div1_but2" onclick="dt_del_sec_but()"></th>
+    </tr>
+</table>
+
+<div id="dt_edit_section" class="dt_edit_sect">
+    <div class="dt_info-editsec_div1">
+        <form method="POST">
+            <div class="dt_info-editsec-tit1">edit information</div>
+            {% csrf_token %}
+            <input type="hidden" name="dt_tabs" value="info_edit">
+           <table align="center" class="dt_info-editsec-tab1">
+                <tr>
+                    <th>first name</th> 
+                    <th>middle name</th> 
+                    <th>last name</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="first_edt" value="{{f.firstnme}}"></td>
+                    <td><input type="text" name="middle_edt" value="{{f.middlenme}}"></td>
+                    <td><input type="text" name="last_edt" value="{{f.lastnme}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">email</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="email_edt" value="{{f.email}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">date of birth</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="date" name="dob_edt" value="{{ f.dob|date:'Y-m-d' }}"><td>
+                </tr>
+                <tr>
+                    <th colspan="3">phone</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="phone_edt" value="{{f.phone}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">address</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="add_edt" value="{{f.address}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">Pincode</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="pin_edt" value="{{f.pin}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">city</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="city_edt" value="{{f.city}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">state</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="stat_edt" value="{{f.state}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">Country</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="count_edt" value="{{f.country}}"></td>
+                </tr>
+                <tr>
+                    <th colspan="3">organization</th>
+                </tr>
+                <tr>
+                    <td colspan="3"><input type="text" name="organ_edt" value="{{f.organizations}}"></td>
+                </tr>
+           </table>
+            <div class="dt_info-editsec-butsec">
+                <input type="button" value="CANCEL" onclick="dt_edt_sec_cls()" class="base_but_2"> 
+                <input type="submit" value="SAVE" class="view_pass_editsec_inp_but">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="dt_edit_sect" id="dt_del_sec">
+    <div class="dt_info-delsec_div1" >
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="dt_tabs"  value="info_del"> 
+            <div class="view_pass_delsec_div2">do you want delete this password details</div>
+        
+            <div>
+                <input type="button" onclick="dt_del_sec_butcs()" value="CANCEL" class="base_but_2"> 
+                <input type="submit" value="DELETE" class="basic_but_3_del">
+            </div>
+        </form> 
+    </div>
+</div>
+
+{% endblock %}

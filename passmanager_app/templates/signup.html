@@ -1,0 +1,39 @@
+{% load static %}
+<html>
+    <head>
+        <title></title> 
+        <link rel="stylesheet" href="{% static 'main1.css'%}">
+    </head>
+    <body>
+        <div class="sgup_mn_div">
+            <div class="sgup_div1">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="sgup_div1_div2">
+                        <div class="sgup_div1_div2_div1">sign up</div>
+                        <div class="sgup_div1_div2_div2"><input type="text" name="username" placeholder="USER NAME" required class="sgup_div1_div2_input"></div>
+                        <div class="sgup_div1_div2_div2"><input type="email" name="email" placeholder="EMAIL" required class="sgup_div1_div2_input"></div>
+                        <div class="sgup_div1_div2_div2"><input type="password" name="password" placeholder="PASSWORD" required class="sgup_div1_div2_input"></div>
+                        <div class="sgup_div1_div2_div2"><input type="password" name="password_re" placeholder="RE-PASSWORD" required class="sgup_div1_div2_input"></div> 
+                        <div class="sgup_div1_div2_div2"><input type="submit" value="SUBMIT"  class="home_div1_side2_tab1_but"></div>
+                    </div>
+                </form>
+                 {% if messages%} 
+                <div id="message_pop" class="messages">
+                    {% for message in messages %}
+                    <span class="{{ message.tags }}">{{ message }} <button onclick="cancel()" class="closebut" >X</button></span>
+                    {% endfor %}
+                </div>
+                {% endif%}
+            </div>
+            <div class="sgup_div2">
+                <div class="sgup_div2_div1">
+                    <div class="sgup_div2_div1_div1">welcome back 🙏</div>
+                    <div class="sgup_div2_div1_div2">already have a account ?</div> 
+                    <div><a href="http://127.0.0.1:8000/"><button class="sgup_div2_div1_but">SIGN IN</button></a></div>
+                </div>
+            </div>
+        </div>
+        <script src="{% static 'main.js' %}"></script>
+    </body>
+</html>

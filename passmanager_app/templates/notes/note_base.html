@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% load static %}
+<table class="pass_src_tab1" align="center" id="myTable"> 
+    <tr>
+        <th><h2>Secure notes</h2></th> 
+        <td><a href="http://127.0.0.1:8000/note_add"><button class="base_but_2">ADD</button></a></td>
+    </tr>
+</table>
+
+<div class="">
+    {% for i in note_data %}
+    <a href="http://127.0.0.1:8000/notes_dt/{{i.notes_acc_id}}" class="note_bs_div1_href">
+        <div class="note_bs_div1_div">
+            <div class="note_bs_div1_div2">{{i.note_name}}</div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+{% block add_sec%}{% endblock%}
+
+{% block notes_content %}{% endblock %}
+
+
+{% endblock %}
