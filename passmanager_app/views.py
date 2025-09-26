@@ -10,7 +10,7 @@ from django.db.models import Q
 from datetime import datetime
 # Create your views here.
 load_dotenv() 
-key = os.getenv("FERNET_KEY") 
+key = os.getenv("_KEY") 
 cipher = Fernet(key.encode())
 
 def login(request): 
