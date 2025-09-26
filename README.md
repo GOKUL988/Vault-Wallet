@@ -2,7 +2,7 @@
 
 Vault Wallet is a secure web-based Application desigened to store and manage sensitive user data like PASSWORDS, SECURE NOTES AND PERSONAL INFORMATION. The project uses Cryptography for encrypting and decrypting the user data, ensuring privacy and security. 
 
-# 🚩 FEATURES 
+## 🚩 FEATURES 
 - Save and Manage account credentails with encryption. 
 - Write and store a notes safety with end to end encryption.
 - Keep personal data details in a protected envirnoment.
@@ -17,7 +17,7 @@ Vault Wallet is a secure web-based Application desigened to store and manage sen
 - **DATABASE :** POSTGRESQL 
 - **VERSION CONTROL** GIT & GITHUB  
 
-# 🛠️ INSTALLATION  
+## 🛠️ INSTALLATION  
 
 ### 1. Clone the Repository 
 ```bash
@@ -84,7 +84,7 @@ DB_PORT=****
     python manage.py runserver
 ``` 
 
-# 🪧 SCREENSHOTS 
+## 🪧 SCREENSHOTS 
 ![sample1](Samples/sam1.png) 
 # 
 ![sample2](Samples/sam2.png) 
