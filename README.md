@@ -1,8 +1,8 @@
-# VAULT-WALLET
+## 🔐 VAULT-WALLET
 
 Vault Wallet is a secure web-based Application desigened to store and manage sensitive user data like PASSWORDS, SECURE NOTES AND PERSONAL INFORMATION. The project uses Cryptography for encrypting and decrypting the user data, ensuring privacy and security. 
 
-# FEATURES 
+# 🚩 FEATURES 
 - Save and Manage account credentails with encryption. 
 - Write and store a notes safety with end to end encryption.
 - Keep personal data details in a protected envirnoment.
@@ -11,13 +11,13 @@ Vault Wallet is a secure web-based Application desigened to store and manage sen
 - Focuses on clean User Interface (UI) 
 - Smoothly Animated and provides clean Responsive design  
 
-# TECHNOLOGIES USED 
-- <span style="color:lightblue">**BACKEND :** </span>DJANGO, PYHTON, CRYPTOGRAPHY, PYTHON-DOTENV
-- <span style="color:lightblue">**FRONTEND :**</span>  HTML, CSS, JAVASCRIPT
-- <span style="color:lightblue">**DATABASE :**</span> POSTGRESQL 
-- <span style="color:lightblue">**VERSION CONTROL**</span> GIT & GITHUB  
+## 🤖 TECHNOLOGIES USED 
+- **BACKEND :** DJANGO, PYHTON, CRYPTOGRAPHY, PYTHON-DOTENV
+- **FRONTEND :** HTML, CSS, JAVASCRIPT
+- **DATABASE :** POSTGRESQL 
+- **VERSION CONTROL** GIT & GITHUB  
 
-# INSTALLATION  
+# 🛠️ INSTALLATION  
 
 ### 1. Clone the Repository 
 ```bash
@@ -84,7 +84,7 @@ DB_PORT=****
     python manage.py runserver
 ``` 
 
-# SCREENSHOTS 
+# 🪧 SCREENSHOTS 
 ![sample1](Samples/sam1.png) 
 # 
 ![sample2](Samples/sam2.png) 
@@ -120,10 +120,10 @@ DB_PORT=****
 ![sample17](Samples/sam17.png) 
 # 
 
-## License 
+## 🪪 License 
 - This Project is licensed under the [MIT License](LICENSE) 
 
-## Developer 
+## 👤 Developer 
 - GOKUL 
-- ** 📧 Email :** [gs164945@gmail.com](mailto:gs164945@gmail.com) 
-- **🌐 GitHub Portfolio :**[LINK](https://gokul988.github.io/Portfolio_web/)
+- **📧 Email :** [gs164945@gmail.com](mailto:gs164945@gmail.com) 
+- **🌐 GitHub Portfolio :** [LINK](https://gokul988.github.io/Portfolio_web/)
