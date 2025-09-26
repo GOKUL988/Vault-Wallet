@@ -307,7 +307,7 @@ def note_add(request):
             for note_con in fields:
                 notes_con.objects.create( 
                     user_idf = notesdb,
-                    note_con = note_con
+                    note_con =cipher.encrypt(note_con.encode()).decode()
                 )
             return redirect('note_base')    
 
@@ -320,17 +320,18 @@ def notes_dt(request,notes_acc_id):
         return redirect('login') 
     else: 
         notes_access= get_object_or_404(notes_db, notes_acc_id = notes_acc_id , user_inf_notes = user_id) 
-        note_dt = notes_con.objects.filter(user_idf = notes_access).order_by("pk")
-
+        note_dt = notes_con.objects.filter(user_idf = notes_access).order_by("pk") 
+        for i in note_dt:
+            i.note_con= cipher.decrypt(i.note_con.encode()).decode() 
         if request.method == "POST" and user_id:
             form_type = request.POST.get("note_dt")
             if form_type == "edit_notes": 
                 field_edt = request.POST.getlist("field_edit[]") 
                 for i, cont in enumerate(field_edt): 
                     obj = note_dt[i] 
-                    print(obj)
-                    obj.note_con = cont 
+                    obj.note_con = cipher.encrypt(cont.encode()).decode()
                     obj.save()
+                return redirect("notes_dt", notes_acc_id = notes_access.notes_acc_id)    
             elif form_type =="del_notes": 
                 field_opt = request.POST.getlist("inp_choice[]") 
                 if not field_opt: 
@@ -340,15 +341,17 @@ def notes_dt(request,notes_acc_id):
                     for j in field_opt: 
                         obj_dele =  notes_con.objects.filter(user_idf = notes_access, pk = j)
                         print(obj_dele)
-                        obj_dele.delete()   
+                        obj_dele.delete() 
+                    return redirect("notes_dt", notes_acc_id = notes_access.notes_acc_id)      
 
             elif form_type == "add_fields" : 
                 fields_add = request.POST.getlist("field[]")
                 for i in fields_add: 
                     notes_con.objects.create(
                         user_idf = notes_access, 
-                        note_con = i,
-                    )       
+                        note_con = cipher.encrypt( i.encode()).decode()
+                    )     
+                return redirect("notes_dt", notes_acc_id = notes_access.notes_acc_id)  
             else: 
                 return redirect('note_base')                                        
     con={

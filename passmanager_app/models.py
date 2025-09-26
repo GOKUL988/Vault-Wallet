@@ -31,7 +31,7 @@ class info_db(models.Model):
     middlenme = models.CharField(max_length=30)  
     lastnme = models.CharField(max_length=30) 
     email = models.EmailField() 
-    dob = models.DateField() 
+    dob = models.DateField(null= True) 
     phone = models.CharField(max_length=50)
     address = models.CharField(max_length=100) 
     pin = models.CharField(max_length=50) 
